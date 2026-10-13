@@ -1,3 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">BizBridge Connect</string>
+    <string name="app_name">BizBridge</string>
+    <string name="splash_tagline">Connect. Book. Grow.</string>
+    <string name="splash_subtitle">Your neighborhood, connected.</string>
+
+    <string name="welcome_back">Welcome back</string>
+    <string name="login_subtitle">Your next local discovery is one login away.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="email_hint">Enter your email address</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create Account</string>
+
+    <string name="secure_login">One secure login for every role.</string>
+    <string name="customer_home">Customer → Home</string>
+    <string name="business_dashboard">Business Owner → Dashboard</string>
+    <string name="admin_dashboard">Admin → Admin Dashboard</string>
 </resources>
