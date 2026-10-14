@@ -1,8 +1,8 @@
 package com.bizbridge.connect
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -12,6 +12,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -19,11 +22,14 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var ivProfileImage: ImageView
     private lateinit var tvUploadImage: TextView
+    private lateinit var btnRegister: Button
+
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     private val imagePicker = registerForActivityResult(
         ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
-
         if (uri != null) {
             selectedImageUri = uri
 
@@ -40,10 +46,16 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        // Initialize Firebase
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
+        // Initialize views
         ivProfileImage = findViewById(R.id.ivProfileImage)
         tvUploadImage = findViewById(R.id.tvUploadImage)
+        btnRegister = findViewById(R.id.btnRegister)
 
-        // Open gallery when the profile image is clicked
+        // Open gallery
         ivProfileImage.setOnClickListener {
             openImagePicker()
         }
@@ -57,84 +69,156 @@ class RegisterActivity : AppCompatActivity() {
             finish()
         }
 
-        // Navigate back to Login screen
+        // Login link
         findViewById<TextView>(R.id.tvGoToLogin).setOnClickListener {
             finish()
         }
 
         // Register button
-        findViewById<Button>(R.id.btnRegister).setOnClickListener {
+        btnRegister.setOnClickListener {
+            registerUser()
+        }
+    }
 
-            val name = findViewById<EditText>(
-                R.id.etFullName
-            ).text.toString().trim()
+    private fun registerUser() {
 
-            val email = findViewById<EditText>(
-                R.id.etRegisterEmail
-            ).text.toString().trim()
+        val name = findViewById<EditText>(
+            R.id.etFullName
+        ).text.toString().trim()
 
-            val phone = findViewById<EditText>(
-                R.id.etPhone
-            ).text.toString().trim()
+        val email = findViewById<EditText>(
+            R.id.etRegisterEmail
+        ).text.toString().trim()
 
-            val password = findViewById<EditText>(
-                R.id.etRegisterPassword
-            ).text.toString()
+        val phone = findViewById<EditText>(
+            R.id.etPhone
+        ).text.toString().trim()
 
-            val confirmPassword = findViewById<EditText>(
-                R.id.etConfirmPassword
-            ).text.toString()
+        val password = findViewById<EditText>(
+            R.id.etRegisterPassword
+        ).text.toString()
 
-            val termsAccepted = findViewById<CheckBox>(
-                R.id.cbTerms
-            ).isChecked
+        val confirmPassword = findViewById<EditText>(
+            R.id.etConfirmPassword
+        ).text.toString()
 
-            val accountType = when (
-                findViewById<RadioGroup>(
-                    R.id.rgAccountType
-                ).checkedRadioButtonId
-            ) {
-                R.id.rbBusinessOwner -> "BUSINESS_OWNER"
-                else -> "CUSTOMER"
+        val termsAccepted = findViewById<CheckBox>(
+            R.id.cbTerms
+        ).isChecked
+
+        val accountType = when (
+            findViewById<RadioGroup>(
+                R.id.rgAccountType
+            ).checkedRadioButtonId
+        ) {
+            R.id.rbBusinessOwner -> "BUSINESS_OWNER"
+            else -> "CUSTOMER"
+        }
+
+        // Validate inputs
+        when {
+            name.isBlank() -> {
+                showMessage("Enter your full name")
+                return
             }
 
-            when {
-                name.isBlank() -> {
-                    showMessage("Enter your full name")
-                }
+            email.isBlank() ||
+                    !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                showMessage("Enter a valid email address")
+                return
+            }
 
-                email.isBlank() ||
-                        !android.util.Patterns.EMAIL_ADDRESS
-                            .matcher(email).matches() -> {
-                    showMessage("Enter a valid email address")
-                }
+            phone.isBlank() -> {
+                showMessage("Enter your phone number")
+                return
+            }
 
-                phone.isBlank() -> {
-                    showMessage("Enter your phone number")
-                }
+            password.length < 6 -> {
+                showMessage(
+                    "Password must have at least 6 characters"
+                )
+                return
+            }
 
-                password.length < 6 -> {
-                    showMessage(
-                        "Password must have at least 6 characters"
-                    )
-                }
+            password != confirmPassword -> {
+                showMessage("Passwords do not match")
+                return
+            }
 
-                password != confirmPassword -> {
-                    showMessage("Passwords do not match")
-                }
-
-                !termsAccepted -> {
-                    showMessage("Please accept the terms")
-                }
-
-                else -> {
-                    showMessage(
-                        "$accountType details validated. " +
-                                "Firebase registration is next."
-                    )
-                }
+            !termsAccepted -> {
+                showMessage("Please accept the terms")
+                return
             }
         }
+
+        // Prevent multiple registration requests
+        btnRegister.isEnabled = false
+        btnRegister.text = "Creating account..."
+
+        // Create Firebase Authentication account
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+
+                if (task.isSuccessful) {
+
+                    val firebaseUser = auth.currentUser
+
+                    if (firebaseUser == null) {
+                        btnRegister.isEnabled = true
+                        btnRegister.text = "Create Account"
+                        showMessage(
+                            "Account created, but user details could not be loaded."
+                        )
+                        return@addOnCompleteListener
+                    }
+
+                    val uid = firebaseUser.uid
+
+                    // Prepare user details for Firestore
+                    val userData = hashMapOf(
+                        "uid" to uid,
+                        "fullName" to name,
+                        "email" to email,
+                        "phone" to phone,
+                        "accountType" to accountType,
+                        "createdAt" to FieldValue.serverTimestamp()
+                    )
+
+                    // Save user details in users collection
+                    db.collection("users")
+                        .document(uid)
+                        .set(userData)
+                        .addOnSuccessListener {
+
+                            btnRegister.isEnabled = true
+                            btnRegister.text = "Create Account"
+
+                            showMessage(
+                                "Account created successfully!"
+                            )
+                        }
+                        .addOnFailureListener { exception ->
+
+                            btnRegister.isEnabled = true
+                            btnRegister.text = "Create Account"
+
+                            showMessage(
+                                "Account created, but profile saving failed. " +
+                                        "Please check your connection and Firestore rules."
+                            )
+                        }
+
+                } else {
+
+                    btnRegister.isEnabled = true
+                    btnRegister.text = "Create Account"
+
+                    val errorMessage = task.exception?.localizedMessage
+                        ?: "Registration failed. Please try again."
+
+                    showMessage(errorMessage)
+                }
+            }
     }
 
     private fun openImagePicker() {
@@ -145,7 +229,7 @@ class RegisterActivity : AppCompatActivity() {
         Toast.makeText(
             this,
             message,
-            Toast.LENGTH_SHORT
+            Toast.LENGTH_LONG
         ).show()
     }
 }
