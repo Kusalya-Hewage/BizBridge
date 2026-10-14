@@ -1,10 +1,518 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CustomerDashboardActivity">
+    android:background="@color/background"
+    android:fillViewport="true"
+    android:clipToPadding="false">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="22dp"
+        android:paddingBottom="14dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvGreeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hello there 👋"
+                    android:textColor="@color/text_primary"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Discover something great nearby"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_dashboard_circle"
+                android:gravity="center"
+                android:text="B"
+                android:textColor="@color/primary"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Location -->
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="⌖  Your neighborhood"
+            android:textColor="@color/primary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <!-- Search -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_dashboard_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="15dp"
+            android:paddingEnd="12dp">
+
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:text="⌕"
+                android:textColor="@color/primary"
+                android:textSize="27sp" />
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:hint="Search businesses or services"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:paddingStart="6dp"
+                android:singleLine="true"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/hint"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- Categories heading -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:text="Categories"
+            android:textColor="@color/text_primary"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <!-- Categories row 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/catSalon"
+                style="@style/DashboardCategory"
+                android:text="✂  Salon" />
+
+            <TextView
+                android:id="@+id/catBeauty"
+                style="@style/DashboardCategory"
+                android:layout_marginStart="10dp"
+                android:text="♡  Beauty" />
+
+            <TextView
+                android:id="@+id/catFitness"
+                style="@style/DashboardCategory"
+                android:layout_marginStart="10dp"
+                android:text="✦  Fitness" />
+
+        </LinearLayout>
+
+        <!-- Categories row 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/catRepair"
+                style="@style/DashboardCategory"
+                android:text="⚒  Repair" />
+
+            <TextView
+                android:id="@+id/catEducation"
+                style="@style/DashboardCategory"
+                android:layout_marginStart="10dp"
+                android:text="▤  Education" />
+
+            <TextView
+                android:id="@+id/catOther"
+                style="@style/DashboardCategory"
+                android:layout_marginStart="10dp"
+                android:text="•••  Other" />
+
+        </LinearLayout>
+
+        <!-- Nearby businesses -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Nearby Businesses"
+                android:textColor="@color/text_primary"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSeeAllBusinesses"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="See all"
+                android:textColor="@color/primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Business card 1: demo content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_dashboard_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:background="@drawable/bg_dashboard_circle"
+                    android:gravity="center"
+                    android:text="✂"
+                    android:textColor="@color/primary"
+                    android:textSize="27sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="13dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ABC Salon"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Salon · Beauty"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="★ 4.8  ·  Sample listing"
+                        android:textColor="@color/secondary"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnViewSalon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_button_primary"
+                    android:gravity="center"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:text="View"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="14dp"
+                android:background="@color/input_border" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Services available to explore"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <!-- Business card 2: demo content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_dashboard_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:background="@drawable/bg_dashboard_circle"
+                android:gravity="center"
+                android:text="✦"
+                android:textColor="@color/secondary"
+                android:textSize="27sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="13dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Flow Fitness"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Fitness · Wellness"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Explore fitness services"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btnViewFitness"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_button_secondary"
+                android:gravity="center"
+                android:paddingStart="13dp"
+                android:paddingEnd="13dp"
+                android:text="View"
+                android:textColor="@color/primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Popular services -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Popular Services"
+            android:textColor="@color/text_primary"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_dashboard_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Haircut"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="30 min · Professional styling"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Example price: Rs. 1,500"
+                    android:textColor="@color/primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btnBookService"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_button_primary"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Book"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Promotions -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Latest Promotions"
+            android:textColor="@color/text_primary"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="22dp"
+            android:background="@drawable/bg_dashboard_promotion"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SPECIAL OFFER"
+                android:textColor="@color/secondary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Discover local offers"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Explore promotions from businesses in your community."
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+        <!-- Bottom navigation -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@drawable/bg_dashboard_card"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/navHome"
+                style="@style/DashboardNavigation"
+                android:text="⌂\nHome"
+                android:textColor="@color/primary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/navSearch"
+                style="@style/DashboardNavigation"
+                android:text="⌕\nSearch" />
+
+            <TextView
+                android:id="@+id/navBookings"
+                style="@style/DashboardNavigation"
+                android:text="▣\nBookings" />
+
+            <TextView
+                android:id="@+id/navNotifications"
+                style="@style/DashboardNavigation"
+                android:text="♧\nAlerts" />
+
+            <TextView
+                android:id="@+id/navProfile"
+                style="@style/DashboardNavigation"
+                android:text="○\nProfile" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="12dp"
+            android:padding="8dp"
+            android:text="Log out"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+</ScrollView>
