@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Header -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Discover Businesses"
+                android:textColor="@color/text_primary"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Find the right service for you"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <!-- Search -->
+            <EditText
+                android:id="@+id/etBusinessSearch"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/bg_dashboard_card"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:drawablePadding="12dp"
+                android:hint="Search businesses or services"
+                android:inputType="text"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:singleLine="true"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/hint"
+                android:textSize="14sp" />
+
+            <!-- Categories -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Categories"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/filterAll"
+                        style="@style/DashboardCategory"
+                        android:layout_width="90dp"
+                        android:layout_weight="0"
+                        android:text="All" />
+
+                    <TextView
+                        android:id="@+id/filterSalon"
+                        style="@style/DashboardCategory"
+                        android:layout_width="90dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="0"
+                        android:text="Salon" />
+
+                    <TextView
+                        android:id="@+id/filterBeauty"
+                        style="@style/DashboardCategory"
+                        android:layout_width="90dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="0"
+                        android:text="Beauty" />
+
+                    <TextView
+                        android:id="@+id/filterFitness"
+                        style="@style/DashboardCategory"
+                        android:layout_width="90dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="0"
+                        android:text="Fitness" />
+
+                    <TextView
+                        android:id="@+id/filterRepair"
+                        style="@style/DashboardCategory"
+                        android:layout_width="90dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="0"
+                        android:text="Repair" />
+
+                    <TextView
+                        android:id="@+id/filterEducation"
+                        style="@style/DashboardCategory"
+                        android:layout_width="100dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="0"
+                        android:text="Education" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Results heading -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Available Businesses"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvBusinessCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3 results"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <!-- Business 1 -->
+            <LinearLayout
+                android:id="@+id/cardBusiness1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_dashboard_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvBusiness1Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Glow Beauty Salon"
+                    android:textColor="@color/text_primary"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvBusiness1Category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="Salon · Beauty"
+                    android:textColor="@color/primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvBusiness1Details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="★ 4.8  ·  Negombo"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="View business  →"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <!-- Business 2 -->
+            <LinearLayout
+                android:id="@+id/cardBusiness2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_dashboard_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvBusiness2Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FitLife Fitness Center"
+                    android:textColor="@color/text_primary"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvBusiness2Category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="Fitness"
+                    android:textColor="@color/primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvBusiness2Details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="★ 4.6  ·  Negombo"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="View business  →"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <!-- Business 3 -->
+            <LinearLayout
+                android:id="@+id/cardBusiness3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_dashboard_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvBusiness3Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SmartFix Repair Center"
+                    android:textColor="@color/text_primary"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvBusiness3Category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:text="Repair"
+                    android:textColor="@color/primary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvBusiness3Details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="★ 4.5  ·  Negombo"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="View business  →"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <!-- Empty state -->
+            <TextView
+                android:id="@+id/tvNoResults"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="No businesses found. Try another search."
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/surface"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp">
+
+        <TextView
+            android:id="@+id/navHome"
+            style="@style/DashboardNavigation"
+            android:text="⌂&#10;Home" />
+
+        <TextView
+            android:id="@+id/navSearch"
+            style="@style/DashboardNavigation"
+            android:text="⌕&#10;Search"
+            android:textColor="@color/primary" />
+
+        <TextView
+            android:id="@+id/navBookings"
+            style="@style/DashboardNavigation"
+            android:text="▣&#10;Bookings" />
+
+        <TextView
+            android:id="@+id/navNotifications"
+            style="@style/DashboardNavigation"
+            android:text="♧&#10;Alerts" />
+
+        <TextView
+            android:id="@+id/navProfile"
+            style="@style/DashboardNavigation"
+            android:text="●&#10;Profile" />
+
+    </LinearLayout>
+
+</LinearLayout>
