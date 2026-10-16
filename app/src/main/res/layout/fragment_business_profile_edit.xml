@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8F3FC"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@drawable/bg_profile_edit_container">
+
+        <!-- Header -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit business profile"
+                android:textColor="#172B4D"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCloseProfileEdit"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:text="×"
+                android:textColor="#8796A5"
+                android:textSize="28sp" />
+
+        </RelativeLayout>
+
+        <!-- Change cover image -->
+
+        <TextView
+            android:id="@+id/btnChangeCover"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="@drawable/bg_upload_profile_image"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="▧\nChange cover image\nJPG or PNG · Up to 5 MB"
+            android:textAlignment="center"
+            android:textColor="#1976C9"
+            android:textSize="14sp"
+            android:lineSpacingExtra="3dp" />
+
+        <!-- Change business logo -->
+
+        <TextView
+            android:id="@+id/btnChangeLogo"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_upload_profile_image"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="▧\nChange business logo\nJPG or PNG · Up to 5 MB"
+            android:textAlignment="center"
+            android:textColor="#1976C9"
+            android:textSize="14sp"
+            android:lineSpacingExtra="3dp" />
+
+        <!-- Business name -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Business name"
+            android:textColor="#172B4D"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etProfileBusinessName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_profile_edit_field"
+            android:hint="ABC Salon"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:singleLine="true"
+            android:textColor="#65788B"
+            android:textColorHint="#7C8998"
+            android:textSize="14sp" />
+
+        <!-- Category -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Category"
+            android:textColor="#172B4D"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etProfileCategory"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_profile_edit_field"
+            android:hint="Salon · Beauty"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:singleLine="true"
+            android:textColor="#65788B"
+            android:textColorHint="#7C8998"
+            android:textSize="14sp" />
+
+        <!-- Address -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Address"
+            android:textColor="#172B4D"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etProfileAddress"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_profile_edit_field"
+            android:hint="42 Galle Road, Colombo 03"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:singleLine="true"
+            android:inputType="textPostalAddress"
+            android:textColor="#65788B"
+            android:textColorHint="#7C8998"
+            android:textSize="14sp" />
+
+        <!-- Phone -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Phone"
+            android:textColor="#172B4D"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etProfilePhone"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_profile_edit_field"
+            android:hint="077 456 7890"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:singleLine="true"
+            android:inputType="phone"
+            android:textColor="#65788B"
+            android:textColorHint="#7C8998"
+            android:textSize="14sp" />
+
+        <!-- Opening hours -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Opening hours"
+            android:textColor="#172B4D"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etProfileOpeningHours"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_profile_edit_field"
+            android:hint="Mon–Sat 9 AM–7 PM; Sun 10 AM–4 PM"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:singleLine="true"
+            android:textColor="#65788B"
+            android:textColorHint="#7C8998"
+            android:textSize="13sp" />
+
+        <!-- Description -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Description"
+            android:textColor="#172B4D"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etProfileDescription"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/bg_profile_edit_field"
+            android:gravity="top|start"
+            android:hint="Your neighborhood salon for fresh cuts, thoughtful care and everyday confidence."
+            android:inputType="textMultiLine|textCapSentences"
+            android:padding="14dp"
+            android:textColor="#65788B"
+            android:textColorHint="#7C8998"
+            android:textSize="14sp" />
+
+        <!-- Save changes -->
+
+        <Button
+            android:id="@+id/btnSaveProfileChanges"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="18dp"
+            android:backgroundTint="#1976C9"
+            android:text="Save changes"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- Cancel -->
+
+        <Button
+            android:id="@+id/btnCancelProfileEdit"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#E8F3FC"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="#1976C9"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>
