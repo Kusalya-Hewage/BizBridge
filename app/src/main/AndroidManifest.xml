@@ -9,32 +9,58 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.BizBridgeConnect">
+
+        <!-- Customer Dashboard -->
         <activity
             android:name=".CustomerDashboardActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <!-- Registration -->
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
+
+        <!-- Customer Login -->
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+
+        <!-- Onboarding -->
         <activity
             android:name=".OnboardingActivity"
             android:exported="false" />
+
+        <!-- Admin Dashboard -->
+        <activity
+            android:name=".AdminDashboardActivity"
+            android:exported="false" />
+
+        <!-- Admin Login -->
+        <activity
+            android:name=".AdminLoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Business Search -->
+        <activity
+            android:name=".BusinessSearchActivity"
+            android:exported="false" />
+
+        <!-- Main / Splash Screen -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity
-            android:name=".BusinessSearchActivity"
-            android:exported="false" />
+
     </application>
 
 </manifest>
