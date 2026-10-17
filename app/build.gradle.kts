@@ -50,4 +50,8 @@ dependencies {
 
 // Cloud Firestore
     implementation("com.google.firebase:firebase-firestore")
+
+    implementation("com.google.zxing:core:3.5.3")
+
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
 }

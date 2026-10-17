@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:padding="20dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+      <TextView
+          android:id="@+id/btnBookingBack"
+          android:layout_width="42dp"
+          android:layout_height="42dp"
+          android:gravity="center"
+          android:text="‹"
+          android:textColor="@color/text_primary"
+          android:textSize="34sp" />
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:text="Book Appointment"
+          android:textColor="@color/text_primary"
+          android:textSize="22sp"
+          android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Choose your preferred date and time."
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp" />
+
+    <!-- Business details -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/bg_dashboard_card"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="BUSINESS"
+          android:textColor="@color/text_secondary"
+          android:textSize="11sp" />
+
+      <TextView
+          android:id="@+id/tvBookingBusinessName"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="5dp"
+          android:text="ABC Salon"
+          android:textColor="@color/text_primary"
+          android:textSize="18sp"
+          android:textStyle="bold" />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:text="SELECTED SERVICE"
+          android:textColor="@color/text_secondary"
+          android:textSize="11sp" />
+
+      <TextView
+          android:id="@+id/tvBookingServiceName"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="5dp"
+          android:text="Haircut"
+          android:textColor="@color/text_primary"
+          android:textSize="16sp"
+          android:textStyle="bold" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="12dp"
+          android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvBookingDuration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="30 minutes"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tvBookingPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rs. 1,500"
+            android:textColor="@color/primary_dark"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+      </LinearLayout>
+    </LinearLayout>
+
+    <!-- Date -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Select Date"
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnSelectDate"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_button_secondary"
+        android:text="Choose appointment date"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_dark" />
+
+    <TextView
+        android:id="@+id/tvSelectedDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="No date selected"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp" />
+
+    <!-- Time -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Available Time Slots"
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/rgTimeSlots"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+      <RadioButton
+          android:id="@+id/timeSlot0900"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:text="09:00 AM"
+          android:textColor="@color/text_primary" />
+
+      <RadioButton
+          android:id="@+id/timeSlot1000"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:text="10:00 AM"
+          android:textColor="@color/text_primary" />
+
+      <RadioButton
+          android:id="@+id/timeSlot1100"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:text="11:00 AM"
+          android:textColor="@color/text_primary" />
+
+      <RadioButton
+          android:id="@+id/timeSlot1400"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:text="02:00 PM"
+          android:textColor="@color/text_primary" />
+
+      <RadioButton
+          android:id="@+id/timeSlot1500"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:text="03:00 PM"
+          android:textColor="@color/text_primary" />
+    </RadioGroup>
+
+    <!-- Notes -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="Additional Notes (Optional)"
+        android:textColor="@color/text_primary"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/etBookingNotes"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_dashboard_card"
+        android:gravity="top|start"
+        android:hint="Enter any special requests"
+        android:inputType="textCapSentences|textMultiLine"
+        android:padding="12dp"
+        android:textColor="@color/text_primary"
+        android:textColorHint="@color/hint" />
+
+    <!-- Confirm -->
+    <Button
+        android:id="@+id/btnConfirmBooking"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/bg_button_primary"
+        android:text="Confirm Booking"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+
+  </LinearLayout>
+</ScrollView>

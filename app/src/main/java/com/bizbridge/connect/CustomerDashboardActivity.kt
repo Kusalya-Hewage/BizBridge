@@ -131,9 +131,11 @@ class CustomerDashboardActivity : AppCompatActivity() {
                 openBusinessSearch()
             }
 
-        findViewById<TextView>(R.id.navBookings)
+        findViewById<android.view.View>(R.id.navBookings)
             .setOnClickListener {
-                showComingSoon("My Bookings")
+                startActivity(
+                    Intent(this, MyBookingsActivity::class.java)
+                )
             }
 
         findViewById<TextView>(R.id.navNotifications)
