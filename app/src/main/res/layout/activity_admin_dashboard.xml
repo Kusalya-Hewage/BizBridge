@@ -1,10 +1,443 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminDashboardActivity">
+    android:orientation="vertical"
+    android:background="#F3F7FA">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Admin dashboard"
+                        android:textColor="#142C44"
+                        android:textSize="17sp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Community overview • 9 October 2026"
+                        android:textColor="#526A80"
+                        android:textSize="9sp"/>
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btnNotification"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Notifications"
+                    android:src="@android:drawable/ic_popup_reminder"
+                    app:tint="#1681D3"/>
+            </LinearLayout>
+
+            <!-- Welcome banner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:background="@drawable/bg_banner_dashboard_admin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A thriving local community"
+                    android:textColor="#142C44"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Review new businesses and keep every connection trusted."
+                    android:textColor="#526A80"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+
+            <!-- Statistics row 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <include
+                    layout="@layout/item_stat_users_dashboard_admin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <include
+                    layout="@layout/item_stat_businesses_dashboard_admin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <!-- Statistics row 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <include
+                    layout="@layout/item_stat_pending_dashboard_admin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <include
+                    layout="@layout/item_stat_bookings_dashboard_admin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <!-- Completed bookings -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:background="@drawable/bg_card_dashboard_admin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2,980"
+                    android:textColor="#0879D1"
+                    android:textSize="19sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Completed Bookings"
+                    android:textColor="#526A80"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+
+            <!-- Pending approvals title -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Pending Business Approvals"
+                    android:textColor="#142C44"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/btnViewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:text="View all"
+                    android:textColor="#0879D1"
+                    android:textSize="10sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <!-- Business 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@drawable/bg_card_dashboard_admin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_pending_dashboard_admin"
+                    android:paddingHorizontal="7dp"
+                    android:paddingVertical="3dp"
+                    android:text="PENDING"
+                    android:textColor="#B56A00"
+                    android:textSize="8sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="ABC Salon — New Branch"
+                    android:textColor="#142C44"
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Beauty · Owner: Nimal Silva"
+                    android:textColor="#526A80"
+                    android:textSize="9sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="New branch registration in Colombo 04. Separate from the active ABC Salon in Colombo 03."
+                    android:textColor="#526A80"
+                    android:textSize="9sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnViewABC"
+                        style="@style/SmallActionButton"
+                        android:backgroundTint="#E5F1FD"
+                        android:text="View"
+                        android:textColor="#0879D1"/>
+
+                    <Button
+                        android:id="@+id/btnApproveABC"
+                        style="@style/SmallActionButton"
+                        android:layout_marginStart="6dp"
+                        android:backgroundTint="#1678CE"
+                        android:text="Approve"
+                        android:textColor="#FFFFFF"/>
+
+                    <Button
+                        android:id="@+id/btnRejectABC"
+                        style="@style/SmallActionButton"
+                        android:layout_marginStart="6dp"
+                        android:backgroundTint="#FDE8E8"
+                        android:text="Reject"
+                        android:textColor="#C52F38"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Business 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@drawable/bg_card_dashboard_admin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bright Minds Academy"
+                    android:textColor="#142C44"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Education · Owner: Ayesha Fernando"
+                    android:textColor="#526A80"
+                    android:textSize="9sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnViewAcademy"
+                        style="@style/SmallActionButton"
+                        android:backgroundTint="#E5F1FD"
+                        android:text="View"
+                        android:textColor="#0879D1"/>
+
+                    <Button
+                        android:id="@+id/btnApproveAcademy"
+                        style="@style/SmallActionButton"
+                        android:layout_marginStart="6dp"
+                        android:backgroundTint="#1678CE"
+                        android:text="Approve"
+                        android:textColor="#FFFFFF"/>
+
+                    <Button
+                        android:id="@+id/btnRejectAcademy"
+                        style="@style/SmallActionButton"
+                        android:layout_marginStart="6dp"
+                        android:backgroundTint="#FDE8E8"
+                        android:text="Reject"
+                        android:textColor="#C52F38"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Recent registrations -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Recent Registrations"
+                android:textColor="#142C44"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@drawable/bg_card_dashboard_admin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chathuni                                      Customer · 8 Oct"
+                    android:textColor="#526A80"
+                    android:textSize="9sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="Nimal Silva                              Business Owner · 9 Oct"
+                    android:textColor="#526A80"
+                    android:textSize="9sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:text="Ayesha Fernando                   Business Owner · 9 Oct"
+                    android:textColor="#526A80"
+                    android:textSize="9sp"/>
+            </LinearLayout>
+
+            <!-- Recent bookings -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Recent Bookings"
+                android:textColor="#142C44"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:background="@drawable/bg_card_dashboard_admin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🏪   ABC Salon                         CONFIRMED"
+                    android:textColor="#142C44"
+                    android:textSize="10sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="       Haircut · BB-00125"
+                    android:textColor="#526A80"
+                    android:textSize="9sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="📅  10 October 2026 · 10:30 AM"
+                    android:textColor="#526A80"
+                    android:textSize="9sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Rs. 1,500"
+                        android:textColor="#142C44"
+                        android:textSize="10sp"
+                        android:textStyle="bold"/>
+
+                    <Button
+                        android:id="@+id/btnViewBooking"
+                        style="@style/SmallActionButton"
+                        android:backgroundTint="#E5F1FD"
+                        android:text="View"
+                        android:textColor="#0879D1"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Fixed bottom button -->
+    <Button
+        android:id="@+id/btnOpenManagement"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#1678CE"
+        android:text="Open Admin Management"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="11sp"
+        android:textStyle="bold"/>
+
+</LinearLayout>

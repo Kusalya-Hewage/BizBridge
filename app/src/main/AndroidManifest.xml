@@ -31,10 +31,15 @@
             android:name=".OnboardingActivity"
             android:exported="false" />
 
-        <!-- Admin Dashboard -->
         <activity
-            android:name=".AdminDashboardActivity"
+            android:name="com.example.localcommunity.AdminDashboardActivity"
             android:exported="false" />
+
+        <!-- Admin Management -->
+        <activity
+            android:name="com.example.bizbridge.admin.AdminManagementActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <!-- Admin Login -->
         <activity

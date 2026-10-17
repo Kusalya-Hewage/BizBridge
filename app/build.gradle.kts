@@ -50,4 +50,6 @@ dependencies {
 
 // Cloud Firestore
     implementation("com.google.firebase:firebase-firestore")
+
+    implementation("androidx.appcompat:appcompat:1.7.0")
 }

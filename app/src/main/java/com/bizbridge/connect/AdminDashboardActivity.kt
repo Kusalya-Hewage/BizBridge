@@ -1,41 +1,94 @@
-package com.bizbridge.connect
-
+package com.example.localcommunity
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.LinearLayout
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
+import com.bizbridge.connect.R
+import com.example.bizbridge.admin.AdminManagementActivity
 
-class AdminDashboardActivity : AppCompatActivity() {
+class AdminDashboardActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val layout = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            gravity = Gravity.CENTER
-            setPadding(24, 24, 24, 24)
-            setBackgroundColor(0xFFF4F7FC.toInt())
+        try {
+            setContentView(R.layout.activity_admin_dashboard)
+
+            findViewById<ImageButton>(R.id.btnNotification)
+                .setOnClickListener {
+                    showMessage("No new notifications")
+                }
+
+            findViewById<TextView>(R.id.btnViewAll)
+                .setOnClickListener {
+                    showMessage("Opening all pending businesses")
+                }
+
+            findViewById<Button>(R.id.btnViewABC)
+                .setOnClickListener {
+                    showMessage("Viewing ABC Salon details")
+                }
+
+            findViewById<Button>(R.id.btnApproveABC)
+                .setOnClickListener {
+                    showMessage("ABC Salon approval selected")
+                }
+
+            findViewById<Button>(R.id.btnRejectABC)
+                .setOnClickListener {
+                    showMessage("ABC Salon rejection selected")
+                }
+
+            findViewById<Button>(R.id.btnViewAcademy)
+                .setOnClickListener {
+                    showMessage("Viewing Bright Minds Academy")
+                }
+
+            findViewById<Button>(R.id.btnApproveAcademy)
+                .setOnClickListener {
+                    showMessage("Academy approval selected")
+                }
+
+            findViewById<Button>(R.id.btnRejectAcademy)
+                .setOnClickListener {
+                    showMessage("Academy rejection selected")
+                }
+
+            findViewById<Button>(R.id.btnViewBooking)
+                .setOnClickListener {
+                    showMessage("Viewing booking BB-00125")
+                }
+
+            // Updated to open AdminManagementActivity
+            findViewById<Button>(R.id.btnOpenManagement)
+                .setOnClickListener {
+                    val intent = Intent(this, AdminManagementActivity::class.java)
+                    startActivity(intent)
+                }
+
+        } catch (e: Exception) {
+            Toast.makeText(
+                this,
+                "Dashboard error: ${e.message}",
+                Toast.LENGTH_LONG
+            ).show()
+
+            android.util.Log.e(
+                "AdminDashboard",
+                "Dashboard failed to load",
+                e
+            )
         }
+    }
 
-        val title = TextView(this).apply {
-            text = "BizBridge Admin Dashboard"
-            textSize = 24f
-            setTextColor(0xFF087BC1.toInt())
-            gravity = Gravity.CENTER
-        }
-
-        val subtitle = TextView(this).apply {
-            text = "Welcome, Administrator!"
-            textSize = 16f
-            setTextColor(0xFF172D43.toInt())
-            gravity = Gravity.CENTER
-            setPadding(0, 24, 0, 0)
-        }
-
-        layout.addView(title)
-        layout.addView(subtitle)
-
-        setContentView(layout)
+    private fun showMessage(message: String) {
+        Toast.makeText(
+            this,
+            message,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
