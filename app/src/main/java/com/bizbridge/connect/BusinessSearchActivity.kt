@@ -242,30 +242,62 @@ class BusinessSearchActivity : AppCompatActivity() {
             cardBusiness3
         )
 
-        cards.forEach { card ->
+        val nameIds = listOf(
+            R.id.tvBusiness1Name,
+            R.id.tvBusiness2Name,
+            R.id.tvBusiness3Name
+        )
+
+        val categoryIds = listOf(
+            R.id.tvBusiness1Category,
+            R.id.tvBusiness2Category,
+            R.id.tvBusiness3Category
+        )
+
+        val detailIds = listOf(
+            R.id.tvBusiness1Details,
+            R.id.tvBusiness2Details,
+            R.id.tvBusiness3Details
+        )
+
+        cards.forEachIndexed { index, card ->
 
             card.setOnClickListener {
 
-                val nameId = when (card.id) {
-                    R.id.cardBusiness1 ->
-                        R.id.tvBusiness1Name
-
-                    R.id.cardBusiness2 ->
-                        R.id.tvBusiness2Name
-
-                    else ->
-                        R.id.tvBusiness3Name
-                }
-
                 val businessName =
-                    card.findViewById<TextView>(nameId)
-                        .text.toString()
+                    card.findViewById<TextView>(
+                        nameIds[index]
+                    ).text.toString()
 
-                Toast.makeText(
+                val businessCategory =
+                    card.findViewById<TextView>(
+                        categoryIds[index]
+                    ).text.toString()
+
+                val details =
+                    card.findViewById<TextView>(
+                        detailIds[index]
+                    ).text.toString()
+
+                val rating = Regex("""\d+(\.\d+)?""")
+                    .find(details)?.value ?: "0.0"
+
+                val intent = Intent(
                     this,
-                    "$businessName selected",
-                    Toast.LENGTH_SHORT
-                ).show()
+                    BusinessDetailsActivity::class.java
+                )
+
+                intent.putExtra("businessName", businessName)
+                intent.putExtra("businessCategory", businessCategory)
+                intent.putExtra("businessRating", rating)
+                intent.putExtra("reviewCount", "124")
+                intent.putExtra(
+                    "businessAddress",
+                    "42 Galle Road, Colombo 03"
+                )
+                intent.putExtra("businessPhone", "0774567890")
+
+                startActivity(intent)
             }
         }
     }

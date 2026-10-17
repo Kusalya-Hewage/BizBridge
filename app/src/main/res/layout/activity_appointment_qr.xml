@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/btnQrBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="‹"
+            android:textSize="34sp"
+            android:textColor="@color/text_primary"
+            android:padding="6dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Appointment QR"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your easy check-in pass"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/text_secondary"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_dashboard_card"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/tvQrStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PENDING"
+                android:textStyle="bold"
+                android:textColor="@color/secondary"
+                android:background="@drawable/bg_dashboard_category"
+                android:padding="8dp"/>
+
+            <ImageView
+                android:id="@+id/ivAppointmentQr"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:layout_marginTop="20dp"
+                android:contentDescription="Appointment QR code"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:id="@+id/tvQrBusiness"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:text="Business name"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tvQrService"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:text="Service"
+                android:textColor="@color/text_secondary"/>
+
+            <TextView
+                android:id="@+id/tvQrBookingId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Booking ID"
+                android:textColor="@color/text_primary"/>
+
+            <TextView
+                android:id="@+id/tvQrDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Date"
+                android:textColor="@color/text_primary"/>
+
+            <TextView
+                android:id="@+id/tvQrTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Time"
+                android:textColor="@color/text_primary"/>
+
+            <TextView
+                android:id="@+id/tvQrPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Price"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Show this QR code when you arrive at the business."
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Illustrative QR — live check-in verification is not yet implemented."
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+</ScrollView>
